@@ -12,7 +12,7 @@ import 'constants.dart';
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   const CustomHeader({
     super.key,
-    this.showNotification = false,
+    this.showNotification = true,
     this.showClientName = false,
     this.showClientImage = false,
     this.showTitle = false,

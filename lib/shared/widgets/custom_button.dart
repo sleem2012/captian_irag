@@ -17,13 +17,13 @@ class KButton extends StatelessWidget {
       this.isFlat = false,
       this.iconPath,
       this.textColor,
-      this.borderColor});
+      this.borderColor, this.bordrerRadius});
 
   final String title;
   final bool? isLoading;
   final Color? kFillColor;
   final Function() onPressed;
-  final double? width, hieght;
+  final double? width, hieght,bordrerRadius;
   final String? iconPath;
   final bool isFlat;
   final Color? textColor;
@@ -42,7 +42,7 @@ class KButton extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   color: kFillColor ?? KColors.mainColor,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(bordrerRadius??8),
                   border: Border.all(color: borderColor ?? Colors.transparent)),
               width: width ?? Get.width / 1.1,
               height: hieght ?? Get.height * .064,
@@ -51,8 +51,8 @@ class KButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (iconPath != null) ...[
-                    Image.asset(
-                      iconPath ?? '',
+                    FluxImage(
+                      imageUrl: iconPath ?? '',
                     ),
                     const SizedBox(
                       width: 30,

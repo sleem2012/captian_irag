@@ -79,14 +79,14 @@ class HomeView extends StatelessWidget {
                                     )
                                   ],
                                 ),
-                                FluxImage(
+                                const FluxImage(
                                     imageUrl: "assets/images/sand_time.png")
                               ],
                             ),
                           ),
                         ),
                         Positioned(top: -Get.height * .05,
-                            child: FluxImage(
+                            child: const FluxImage(
                                 imageUrl: "assets/images/big_notification.png")),
                       ],
                     ),
@@ -95,7 +95,7 @@ class HomeView extends StatelessWidget {
                         .of(context)
                         .outLined,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -105,7 +105,7 @@ class HomeView extends StatelessWidget {
                                     .ten
                                     .copyWith(
                                     color: KColors.mainColor)),
-                            Icon(FontAwesomeIcons.sort,color: KColors.lightBlack,)
+                            const Icon(FontAwesomeIcons.sort,color: KColors.lightBlack,)
                           ],
                         ),
                       ),

@@ -21,7 +21,7 @@ class _CustomRadioListTileState extends State<CustomRadioListTile> {
   Widget build(BuildContext context) {
     return Column(
       children: List.generate(
-          4,
+          3,
               (index) =>
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),

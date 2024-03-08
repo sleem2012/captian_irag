@@ -26,23 +26,38 @@ class WalletView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                130.h ,
-                     const ClientWalletCard(),
-
-                20.h,
+                50.h,
+                const CustomWalletCard(
+                    mainColor: Color(0xff59B179),
+                    backColor: Color(0xffD9F2E2),
+                    shadowColor: Color(0x894ADE80),
+                    keyText: 'مستحقات',
+                    valueText: 'IQD 2000',
+                    image: 'assets/images/mostakat.svg'),
+                30.h,
+                const CustomWalletCard(
+                    mainColor: Color(0xFFB15959),
+                    backColor: Color(0xFFF2D9D9),
+                    shadowColor: Color(0x93B15959),
+                    keyText: 'رصيد معلق',
+                    valueText: 'IQD 2000',
+                    image: 'assets/images/rassed_moalq.svg'),
+                50.h,
                 Padding(
                   padding: EdgeInsets.only(bottom: Get.height * .2),
                   child: KButton(
-                    title: "اضافة رصيد",
+                    title: "طلب سحب",
                     onPressed: () {
                       NavHelper.of(context).navigateAddMoney;
                     },
-                    kFillColor: KColors.lightGreen,
-                    iconPath: "assets/images/wallet.png",
-                    textColor: KColors.greenColor,
-                    borderColor: KColors.greenColor,
-                    hieght: 74,
+                    kFillColor: KColors.mainColor,
+                    iconPath: "assets/images/withdraw_request.svg",
+                    textColor: KColors.whiteColor,
+                    // borderColor: KColors.greenColor,
+                    hieght: 64,
                     width: double.infinity,
+                    bordrerRadius: 34,
+
                   ),
                 ),
               ],
@@ -54,68 +69,49 @@ class WalletView extends StatelessWidget {
   }
 }
 
-class ClientWalletCard extends StatelessWidget {
-  const ClientWalletCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: KColors.mainColor,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 24),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "الرصيد المتاح",
-            style: KTextStyle.of(context).fifteen,
-          ),
-          Text(
-            "IQD 2000",
-            style: KTextStyle.of(context).fifteen,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class CustomWalletCard extends StatelessWidget {
   const CustomWalletCard(
       {super.key,
       required this.mainColor,
+      required this.backColor,
+      required this.shadowColor,
       required this.keyText,
       required this.valueText,
-      required this.image});
+      required this.image,});
 
-  final Color mainColor;
+  final Color mainColor,backColor,shadowColor;
   final String keyText, valueText, image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: mainColor.withOpacity(.18),
+          color:backColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: mainColor)),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+              spreadRadius: 0,
+            )
+          ]),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              FluxImage(
+                imageUrl: image,
+                color: mainColor,
+              ),
+              10.w,
               Text(
                 keyText,
                 style:
                     KTextStyle.of(context).fifteen.copyWith(color: mainColor),
-              ),
-              3.h,
-              FluxImage(
-                imageUrl: image,
-                color: mainColor,
               ),
             ],
           ),

@@ -60,7 +60,7 @@ class MainNavPages extends StatelessWidget {
               appBar: CustomHeader(
                 showClientImage: mainBloc.showClientImage,
                 showClientName: mainBloc.showClientName,
-                showNotification: mainBloc.showNotification,
+                // showNotification: mainBloc.showNotification,
                 showTitle: mainBloc.showTitle,
               ),
               body: PageView(
