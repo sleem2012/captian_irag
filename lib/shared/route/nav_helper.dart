@@ -36,4 +36,6 @@ class NavHelper {
   void get navigateToWallet => MainViewBloc.of(_context!).navTaped(4);
   void get navigateAddMoney => MainViewBloc.of(_context!).navTaped(5);
   void get navigateChangePass => MainViewBloc.of(_context!).navTaped(6);
+  void get navigateFreeTrip => MainViewBloc.of(_context!).navTaped(7);
+  void get navigateFavPayment => MainViewBloc.of(_context!).navTaped(8);
 }

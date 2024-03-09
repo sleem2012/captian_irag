@@ -12,9 +12,11 @@ import '../../shared/localization/trans.dart';
 import '../../shared/theme/colors.dart';
 import '../accounts_history/accounts_history_view.dart';
 import '../auth/change_pass/change_pass_view.dart';
+import '../free_trip/free_trip_view.dart';
 import '../reservation/reservation_history.dart';
 import '../settings/settings_view.dart';
 import '../wallet/add_money.dart';
+import '../wallet/fav_payment.dart';
 import '../wallet/wallet_view.dart';
 
 class MainNavPages extends StatelessWidget {
@@ -72,8 +74,9 @@ class MainNavPages extends StatelessWidget {
                   SettingsView(),
                   WalletView(),
                   AddMoneyView(),
-                  ChangePassView()
-
+                  ChangePassView(),
+                  FreeTripsView(),
+                  FavPaymentMethod()
                 ],
               ),
               bottomNavigationBar: AnimatedBottomNavigationBar.builder(

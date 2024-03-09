@@ -7,7 +7,13 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../theme/helper.dart';
 
-enum KDateTimePickerType { dateHijri, dateGregorian, dateTimeHijri, dateTimeGregorian, time }
+enum KDateTimePickerType {
+  dateHijri,
+  dateGregorian,
+  dateTimeHijri,
+  dateTimeGregorian,
+  time
+}
 
 final TextEditingController dateController = TextEditingController();
 
@@ -29,9 +35,11 @@ class SfDatePicker extends StatelessWidget {
     } else {
       final date = await KHelper.showCustomDialog<String>(
         child: SfDatePicker(
-          hijri: type == KDateTimePickerType.dateHijri || type == KDateTimePickerType.dateTimeHijri,
+          hijri: type == KDateTimePickerType.dateHijri ||
+              type == KDateTimePickerType.dateTimeHijri,
           type: type,
-          hasTime: type == KDateTimePickerType.dateTimeGregorian || type == KDateTimePickerType.dateTimeHijri,
+          hasTime: type == KDateTimePickerType.dateTimeGregorian ||
+              type == KDateTimePickerType.dateTimeHijri,
           initial: initial,
           start: start,
           end: end,
@@ -58,12 +66,14 @@ class SfDatePicker extends StatelessWidget {
   final DateTime initial, start, end;
 
   static Future<TimeOfDay?> _timePicker(context) async {
-    TimeOfDay? pickedTime = await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    TimeOfDay? pickedTime =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
     return pickedTime;
   }
 
   onSubmit(BuildContext context, value) async {
-    String? formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.tryParse(value.toString()) ?? initial);
+    String? formattedDate = DateFormat('yyyy-MM-dd')
+        .format(DateTime.tryParse(value.toString()) ?? initial);
     dateController.text = formattedDate;
     final nav = Navigator.of(context);
     if (hasTime) {
@@ -99,16 +109,22 @@ class SfDatePicker extends StatelessWidget {
                 onSubmit: (p0) => onSubmit(context, p0),
               )
             : SfDateRangePicker(
+
                 minDate: start,
                 initialSelectedDate: initial,
+
                 maxDate: end,
                 selectionMode: DateRangePickerSelectionMode.single,
                 showActionButtons: true,
                 selectionColor: KColors.mainColor,
-
-                headerStyle: DateRangePickerHeaderStyle(textStyle: KTextStyle.of(context).ten.copyWith(color: KColors.blackColor,),textAlign: TextAlign.center),
+                headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: KTextStyle.of(context).ten.copyWith(
+                          color: KColors.blackColor,
+                        ),
+                    textAlign: TextAlign.center),
                 onCancel: () => Navigator.of(context).pop(),
                 onSubmit: (p0) => onSubmit(context, p0),
+
               ),
       ),
     );

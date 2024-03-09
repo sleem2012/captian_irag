@@ -35,7 +35,7 @@ dependencies:
   shimmer:
   permission_handler:
   url_launcher:
-  syncfusion_flutter_datepicker: '20.4.43'
+  syncfusion_flutter_datepicker: 24.2.6
   font_awesome_flutter:
   azlistview: 2.0.0
   flutter_slidable:

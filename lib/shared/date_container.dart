@@ -2,6 +2,7 @@ import 'package:captain_iraq/shared/theme/colors.dart';
 import 'package:captain_iraq/shared/theme/helper.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:captain_iraq/shared/widgets/date_picker.dart';
+import 'package:captain_iraq/shared/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
 
 class DateContainer extends StatefulWidget {
@@ -10,12 +11,15 @@ class DateContainer extends StatefulWidget {
     this.firstTextColor,
     this.secondTextColor,
     this.firstContainerColor,
-    required this.title, required this.onPressed,
+    required this.title,
+    required this.onPressed,
+    this.dropDown = false,
   });
 
   final Color? firstTextColor, secondTextColor, firstContainerColor;
   final String title;
   final ValueChanged<String> onPressed;
+  final bool dropDown;
 
   @override
   State<DateContainer> createState() => _DateContainerState();
@@ -56,13 +60,29 @@ class _DateContainerState extends State<DateContainer> {
                           .ten
                           .copyWith(color: widget.firstTextColor)),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  color: KColors.whiteColor,
-                  child: Text(selectedDate ?? '',
-                      style: KTextStyle.of(context).ten.copyWith(
-                          color: widget.secondTextColor ?? KColors.mainColor)),
-                ),
+                widget.dropDown
+                    ? SizedBox(
+                        width: 90,
+                        child: KDropdownBtn(
+                            minHeight: 30,
+                            btnDecoration: const BoxDecoration(
+                              color: KColors.whiteColor,
+                            ),
+                            title: weekDays.firstOrNull??'',
+                            onChanged: (p0) {},
+                            items: weekDays
+                                .map((e) => KHelper.of(context)
+                                    .itemView(itemText: e, value: e))
+                                .toList()),
+                      )
+                    : Container(
+                        padding: const EdgeInsets.all(10),
+                        color: KColors.whiteColor,
+                        child: Text(selectedDate ?? '',
+                            style: KTextStyle.of(context).ten.copyWith(
+                                color: widget.secondTextColor ??
+                                    KColors.mainColor)),
+                      ),
               ],
             ),
           ),
@@ -71,3 +91,13 @@ class _DateContainerState extends State<DateContainer> {
     );
   }
 }
+
+List<String> weekDays = [
+  'السبت',
+  'الأحد',
+  'الإثنين',
+  'الثلاثاء',
+  'الأربعاء',
+  'الخميس',
+  'الجمعة',
+];

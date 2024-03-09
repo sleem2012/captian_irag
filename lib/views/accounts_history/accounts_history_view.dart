@@ -21,7 +21,7 @@ class AccountsHistory extends StatelessWidget {
           child: Container(
             color: KColors.backgroundD,
             width: double.infinity,
-            child: ClientAccountsList(),
+            child: const ClientAccountsList(),
           ),
         )
       ],

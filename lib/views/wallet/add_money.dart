@@ -18,7 +18,7 @@ class AddMoneyView extends StatelessWidget {
     return Column(
       children: [
         const TitledContainer(
-          title: "اضافة رصيد",
+          title: "طلب سحب",
         ),
         Expanded(
             child: Container(

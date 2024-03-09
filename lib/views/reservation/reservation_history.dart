@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../shared/theme/colors.dart';
 import '../../shared/widgets/titled_container.dart';
@@ -16,11 +15,11 @@ class ReservationHistory extends StatelessWidget {
         ),
         Expanded(
             child: Container(
-          color: KColors.backgroundD,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-          child: const BookingHistoryDatePicker(),
-        ))
+              color: KColors.backgroundD,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: const BookingHistoryDatePicker(),
+            ))
       ],
     );
   }
@@ -54,16 +53,17 @@ class _BookingHistoryDatePickerState extends State<BookingHistoryDatePicker> {
     return SfDateRangePicker(
       backgroundColor: KColors.whiteColor,
       showNavigationArrow: true,
-      viewSpacing: 10,
       enablePastDates: false,
       allowViewNavigation: false,
       selectableDayPredicate: (d) => false,
       monthViewSettings: DateRangePickerMonthViewSettings(
         blackoutDates: _selectableDates
-            .where((element) => element.difference(DateTime.now()).inHours > 48)
+            .where((element) => element.difference(DateTime.now()).inHours > 12)
             .toList(),
         specialDates: _selectableDates
-            .where((element) => element.difference(DateTime.now()).inHours < 48)
+            .where((element) =>
+        element.difference(DateTime.now()).inHours < 12 &&
+            element.difference(DateTime.now()).inHours > 0)
             .toList(),
       ),
       monthCellStyle: const DateRangePickerMonthCellStyle(

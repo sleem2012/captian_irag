@@ -2,10 +2,8 @@ import 'package:captain_iraq/shared/extensions.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:captain_iraq/shared/widgets/flux_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../shared/route/nav_helper.dart';
 import '../../shared/theme/colors.dart';
-import '../../shared/widgets/custom_button.dart';
 import '../../shared/widgets/titled_container.dart';
 
 class SettingsView extends StatelessWidget {
@@ -42,7 +40,9 @@ class SettingsView extends StatelessWidget {
                   image: 'assets/images/settings.png',
                   keyText: 'تحرير الرحلة',
                   avatarColor: const Color(0xffFFE7ED),
-                  onNavigate: () {},
+                  onNavigate: () {
+                    NavHelper.of(context).navigateFreeTrip;
+                  },
                 ),
                 20.h,
                 CustomSettingCard(
@@ -50,7 +50,9 @@ class SettingsView extends StatelessWidget {
                   image: 'assets/images/pay_method.svg',
                   keyText: 'طريقة السحب المفضلة',
                   avatarColor: const Color(0xffECEAFF),
-                  onNavigate: () {},
+                  onNavigate: () {
+                    NavHelper.of(context).navigateFavPayment;
+                  },
                 ),
               ],
             ),
