@@ -57,7 +57,7 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
                     if (showNotification)
                       KIconButton(
                         onPressed: () {
-                          NavHelper.of(context).navigateToNotification;
+                          NavHelper.of(context).navigateToSettings;
                         },
                         child: const FluxImage(
                           imageUrl: "assets/images/notification.png",

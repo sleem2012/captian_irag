@@ -19,7 +19,7 @@ class NavHelper {
 
   void get navToReservationHistory => MainViewBloc.of(_context!).navTaped(1);
 
-  void get navigateToNotification => MainViewBloc.of(_context!).navTaped(3);
+  void get navigateToSettings => MainViewBloc.of(_context!).navTaped(3);
 
   void get navigateToDirectReservation =>
       MainViewBloc.of(_context!).navTaped(4);
@@ -33,6 +33,7 @@ class NavHelper {
 
   void get navigateToCustomTripForm => MainViewBloc.of(_context!).navTaped(8);
 
-  void get navigateToWallet => MainViewBloc.of(_context!).navTaped(9);
-  void get navigateAddMoney => MainViewBloc.of(_context!).navTaped(10);
+  void get navigateToWallet => MainViewBloc.of(_context!).navTaped(4);
+  void get navigateAddMoney => MainViewBloc.of(_context!).navTaped(5);
+  void get navigateChangePass => MainViewBloc.of(_context!).navTaped(6);
 }

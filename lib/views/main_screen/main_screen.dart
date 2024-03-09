@@ -3,18 +3,17 @@ import 'package:captain_iraq/shared/custom_header.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:captain_iraq/shared/widgets/action_dialog.dart';
 import 'package:captain_iraq/views/home/home_view.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../di.dart';
 import '../../logic/main_view/main_view_bloc.dart';
 import '../../shared/localization/trans.dart';
 import '../../shared/theme/colors.dart';
 import '../accounts_history/accounts_history_view.dart';
-
+import '../auth/change_pass/change_pass_view.dart';
 import '../reservation/reservation_history.dart';
+import '../settings/settings_view.dart';
 import '../wallet/add_money.dart';
 import '../wallet/wallet_view.dart';
 
@@ -66,18 +65,15 @@ class MainNavPages extends StatelessWidget {
               body: PageView(
                 controller: MainViewBloc.of(context).pageCtrl,
                 physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  const HomeView(),
-                  const ReservationHistory(),
-                  const AccountsHistory(),
-                  Container(),
-                  Container(), //direct reserve
-                  Container(),
-                  Container(),
-                  Container(),
-                  Container(),
-                  const WalletView(),
-                  const AddMoneyView(),
+                children: const [
+                  HomeView(),
+                  ReservationHistory(),
+                  AccountsHistory(),
+                  SettingsView(),
+                  WalletView(),
+                  AddMoneyView(),
+                  ChangePassView()
+
                 ],
               ),
               bottomNavigationBar: AnimatedBottomNavigationBar.builder(

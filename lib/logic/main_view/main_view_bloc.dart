@@ -35,13 +35,13 @@ class MainViewBloc extends Cubit<MainViewState> {
     "assets/images/home.png",
     "assets/images/reservation.png",
     "assets/images/accounts.png",
-    "assets/images/notification.png"
+    "assets/images/settings.png"
   ];
   List<String> label = [
     "الرئيسية",
     "الحجوزات",
     "الحسابات",
-    "الاشعارات",
+    "الأعدادات",
     "الرحلات المباشرة"
   ];
 

@@ -18,7 +18,7 @@ class ReservationHistory extends StatelessWidget {
             child: Container(
           color: KColors.backgroundD,
           width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           child: const BookingHistoryDatePicker(),
         ))
       ],
@@ -56,36 +56,28 @@ class _BookingHistoryDatePickerState extends State<BookingHistoryDatePicker> {
       showNavigationArrow: true,
       viewSpacing: 10,
       enablePastDates: false,
-
-
       allowViewNavigation: false,
-
       selectableDayPredicate: (d) => false,
       monthViewSettings: DateRangePickerMonthViewSettings(
         blackoutDates: _selectableDates
-            .where((element) =>
-                element.difference(DateTime.now()).inHours > 48)
+            .where((element) => element.difference(DateTime.now()).inHours > 48)
             .toList(),
         specialDates: _selectableDates
-            .where((element) =>
-                element.difference(DateTime.now()).inHours < 48)
+            .where((element) => element.difference(DateTime.now()).inHours < 48)
             .toList(),
       ),
-
       monthCellStyle: const DateRangePickerMonthCellStyle(
-        blackoutDateTextStyle: TextStyle(color: Colors.white,),
+        blackoutDateTextStyle: TextStyle(
+          color: Colors.white,
+        ),
         blackoutDatesDecoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.orange,
-
         ),
         specialDatesTextStyle: TextStyle(color: Colors.white),
-
         specialDatesDecoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.red,
-
-
         ),
       ),
     );
