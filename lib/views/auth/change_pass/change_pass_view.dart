@@ -124,7 +124,7 @@ class ChangePassView extends StatelessWidget {
                         onPressed: () {},
                       ),
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 1,
                     ),
                     Expanded(
