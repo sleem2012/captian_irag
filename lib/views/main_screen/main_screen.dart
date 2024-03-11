@@ -13,9 +13,11 @@ import '../../shared/theme/colors.dart';
 import '../accounts_history/accounts_history_view.dart';
 import '../auth/change_pass/change_pass_view.dart';
 import '../free_trip/free_trip_view.dart';
+import '../notification/notification_view.dart';
 import '../reservation/reservation_history.dart';
 import '../settings/settings_view.dart';
-import '../trip_info/trip_info_view.dart';
+import '../trip/start_trip_view.dart';
+import '../trip/trip_info_view.dart';
 import '../wallet/add_money.dart';
 import '../wallet/fav_payment.dart';
 import '../wallet/wallet_view.dart';
@@ -63,7 +65,7 @@ class MainNavPages extends StatelessWidget {
                 showClientImage: mainBloc.showClientImage,
                 showClientName: mainBloc.showClientName,
                 // showNotification: mainBloc.showNotification,
-                showTitle: mainBloc.showTitle,
+                // showTitle: mainBloc.showTitle,
               ),
               body: PageView(
                 controller: MainViewBloc.of(context).pageCtrl,
@@ -78,7 +80,9 @@ class MainNavPages extends StatelessWidget {
                   ChangePassView(),
                   FreeTripsView(),
                   FavPaymentMethod(),
-                  TripInformationView()
+                  TripInformationView(),
+                  NotificationView(),
+                  StartTripView(),
                 ],
               ),
               bottomNavigationBar: AnimatedBottomNavigationBar.builder(

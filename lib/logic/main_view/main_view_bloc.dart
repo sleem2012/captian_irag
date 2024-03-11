@@ -42,11 +42,10 @@ class MainViewBloc extends Cubit<MainViewState> {
     "الحجوزات",
     "الحسابات",
     "الأعدادات",
-    "الرحلات المباشرة"
   ];
 
   bool get showClientName => index == 0;
-  bool get showClientImage=> index == 0||index == 4;
-  bool get showNotification=> index == 0||index == 4;
+  bool get showClientImage=> index == 0;
+  bool get showNotification=> index == 0;
   bool get showTitle=> index == 4;
 }

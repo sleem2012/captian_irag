@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:captain_iraq/shared/extensions.dart';
 import 'package:captain_iraq/shared/widgets/custom_button.dart';
+import 'package:captain_iraq/views/auth/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -98,6 +100,29 @@ class ResetPassView extends StatelessWidget {
                         KButton(
                           title: "تغيير كلمة المرور",
                           onPressed: () {
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.scale,
+                              dialogType: DialogType.success,
+                              body: Text(
+                                "تم تغيير كلمة المرور بنجاح",
+                                style: KTextStyle.of(context)
+                                    .fifteen
+                                    .copyWith(color: Colors.black),
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              btnOk: Padding(
+                                padding: const EdgeInsets.only(top: 16.0),
+                                child: KButton(
+                                  hieght: 42,
+                                  title: "متابعه",
+                                  onPressed: () {
+                                    Get.offAll(()=>LoginView());
+                                  },
+                                ),
+                              ),
+                              btnOkOnPress: () {},
+                            ).show();
 
                           },
                         )

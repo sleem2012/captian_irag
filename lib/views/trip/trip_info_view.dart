@@ -1,4 +1,5 @@
 import 'package:captain_iraq/shared/extensions.dart';
+import 'package:captain_iraq/shared/route/nav_helper.dart';
 import 'package:captain_iraq/shared/theme/helper.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:captain_iraq/shared/widgets/custom_button.dart';
@@ -108,9 +109,9 @@ class TripInformationView extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: Get.height * .2),
                   child: KButton(
                     title: "ابدء الرحلة الان",
-                    onPressed: () {},
-                    kFillColor: KColors.mainColor,
-                    textColor: KColors.whiteColor,
+                    onPressed: () {
+                      NavHelper.of(context).navigateToStartTripView;
+                    },
                     hieght: 55,
                     bordrerRadius: 34,
                     width: Get.width * .7,
