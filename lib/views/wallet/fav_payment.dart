@@ -155,6 +155,7 @@ class FavPaymentMethod extends StatelessWidget {
                     textColor: KColors.whiteColor,
                     hieght: 55,
                     bordrerRadius: 34,
+                    width: Get.width * .7,
                   ),
                 ),
               ],

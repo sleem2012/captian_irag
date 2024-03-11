@@ -47,26 +47,29 @@ class KButton extends StatelessWidget {
               width: width ?? Get.width / 1.1,
               height: hieght ?? Get.height * .064,
               alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (iconPath != null) ...[
-                    FluxImage(
-                      imageUrl: iconPath ?? '',
-                    ),
-                    const SizedBox(
-                      width: 30,
-                    ),
-                  ],
-                  FittedBox(
-                    child: Text(
-                      title,
-                      style: KTextStyle.of(context)
-                          .btnTitle
-                          .copyWith(color: textColor),
-                    ),
+              child: FittedBox(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (iconPath != null) ...[
+                        FluxImage(
+                          imageUrl: iconPath ?? '',
+                        ),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                      ],
+                      Text(
+                        title,
+                        style: KTextStyle.of(context)
+                            .btnTitle
+                            .copyWith(color: textColor),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           );
