@@ -13,11 +13,10 @@ class FleetTypeBloc extends Cubit<FleetTypeState> {
 
   final GeneralRepoImp fleetTypeRepoImp;
 
-  get({required String from, required String to, String? type}) async {
+  get() async {
     try {
       emit(const FleetTypeState.loading());
-      final result = await fleetTypeRepoImp.get_fleet(
-          from: from, to: to, type: type ?? 'go');
+      final result = await fleetTypeRepoImp.get_fleet();
       result.fold(
         (l) {
           debugPrint(
@@ -30,7 +29,7 @@ class FleetTypeBloc extends Cubit<FleetTypeState> {
         },
       );
     } catch (e) {
-      // rethrow;
+      rethrow;
       debugPrint('================= FleetType Bloc (Catch): ${e.toString()} ');
       emit(const FleetTypeState.error(
           error: KFailure.someThingWrongPleaseTryAgain()));

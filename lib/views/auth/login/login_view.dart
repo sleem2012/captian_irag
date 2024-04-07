@@ -15,7 +15,6 @@ import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/helper.dart';
 import '../../../shared/widgets/custom_button.dart';
 import '../../../shared/widgets/text_field.dart';
-import '../forget_pass/forget_pass_view.dart';
 import '../register/register_view.dart';
 import '../widget/phone_form.dart';
 
@@ -89,7 +88,8 @@ class LoginView extends StatelessWidget {
                       PhoneFormField(
                         controller: login.phoneController,
                         onDialChanged: ( code) {
-                          login.countryCode = code?.dialCode ?? '';
+                          debugPrint("Phone""$code");
+                          login.countryCode = code?.dialCode?.replaceAll("+", "") ?? '';
                         },
                       ),
                       SizedBox(height: KHelper.listPadding),
@@ -111,9 +111,9 @@ class LoginView extends StatelessWidget {
                         suffixIcon: IconButton(
                           icon: login.isVisible
                               ? Icon(Icons.visibility_off_outlined,
-                                  color: KColors.blackColor.withOpacity(.4))
+                              color: KColors.blackColor.withOpacity(.4))
                               : Icon(Icons.visibility_outlined,
-                                  color: KColors.blackColor.withOpacity(.4)),
+                              color: KColors.blackColor.withOpacity(.4)),
                           // icon: Icon(Icons.visibility_outlined,
 
                           onPressed: () {
@@ -121,21 +121,23 @@ class LoginView extends StatelessWidget {
                           },
                         ),
                       ),
-                      11.h,
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: InkWell(
-                          onTap: () {
-                            Get.to(() => const ForgetPassView());
-                          },
-                          child: Text(
-                            Tr.get.forget_password,
-                            style: KTextStyle.of(context).ten.copyWith(
-                                  color: KColors.mainColor,
-                                ),
-                          ),
-                        ),
-                      ),
+
+                      ///TODO: add
+                      // 11.h,
+                      // Align(
+                      //   alignment: Alignment.bottomRight,
+                      //   child: InkWell(
+                      //     onTap: () {
+                      //       Get.to(() => const ForgetPassView());
+                      //     },
+                      //     child: Text(
+                      //       Tr.get.forget_password,
+                      //       style: KTextStyle.of(context).ten.copyWith(
+                      //             color: KColors.mainColor,
+                      //           ),
+                      //     ),
+                      //   ),
+                      // ),
                       38.h,
 
                       KButton(

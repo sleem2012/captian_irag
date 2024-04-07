@@ -1,9 +1,5 @@
-import 'package:captain_iraq/data/repository/direct_trip/direct_trip_repo.dart';
 import 'package:captain_iraq/data/repository/general/general_repo.dart';
 import 'package:captain_iraq/logic/banner/banner_bloc.dart';
-import 'package:captain_iraq/logic/book_custom_trip/book_custom_trip_bloc.dart';
-import 'package:captain_iraq/logic/book_direct_trip/book_direct_trip_bloc.dart';
-import 'package:captain_iraq/logic/choose_seet/choose_seet_bloc.dart';
 import 'package:captain_iraq/logic/register/register_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +8,11 @@ import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'data/repository/auth/auth_repo.dart';
-import 'logic/country_codes/country_codes_bloc.dart';
 import 'logic/fleet_type/fleet_type_bloc.dart';
 import 'logic/get_locations/get_locations_bloc.dart';
+import 'logic/get_roots/get_roots_bloc.dart';
 import 'logic/login/login_bloc.dart';
 import 'logic/logout/logout_bloc.dart';
-import 'logic/trip_search/trip_search_bloc.dart';
 import 'shared/api_client/api_client_impl.dart';
 import 'shared/api_middleware_bloc/api_client_bloc.dart';
 import 'shared/observer.dart';
@@ -52,7 +47,6 @@ abstract class Di {
     _i.registerLazySingleton(() => ApiClientBloc());
     _i.registerLazySingleton(() => ImagePicker());
     _i.registerLazySingleton(() => AuthRepoImpl());
-    _i.registerLazySingleton(() => DirectTripRepoImp());
     _i.registerLazySingleton(() => GeneralRepoImp());
 
     ///bloc
@@ -60,14 +54,10 @@ abstract class Di {
     _i.registerFactory(() => LoginBloc(authRepoImpl: _i()));
     _i.registerFactory(() => RegisterBloc(registerRepoImp: _i()));
     _i.registerFactory(() => LogoutBloc(authRepoImpl: _i()));
-    _i.registerFactory(() => ChooseSeetBloc(chooseSeetRepoImp: _i()));
     _i.registerFactory(() => GetLocationsBloc(getLocationsRepoImp: _i()));
-    _i.registerFactory(() => TripSearchBloc(tripSearchRepoImp: _i()));
-    _i.registerFactory(() => CountryCodesBloc(countryCodesRepoImp: _i()));
-    _i.registerFactory(() => BookDirectTripBloc(bookDirectTripRepoImp: _i()));
-    _i.registerFactory(() => BookCustomTripBloc(bookCustomTripRepoImp: _i()));
     _i.registerFactory(() => BannerBloc(bannerRepoImp: _i()));
     _i.registerFactory(() => FleetTypeBloc(fleetTypeRepoImp: _i()));
+    _i.registerFactory(() => GetRootsBloc(getRootsRepoImp: _i()));
   }
 
   static _unReg() async {
@@ -98,21 +88,17 @@ abstract class Di {
 
   static LogoutBloc get logOut => _i.get<LogoutBloc>();
 
-  static ChooseSeetBloc get chooseSeat => _i.get<ChooseSeetBloc>();
 
   static GetLocationsBloc get getLocations => _i.get<GetLocationsBloc>();
 
-  static TripSearchBloc get searchTrip => _i.get<TripSearchBloc>();
 
-  static CountryCodesBloc get countryCode => _i.get<CountryCodesBloc>();
 
   static BannerBloc get getBanner => _i.get<BannerBloc>();
 
-  static BookDirectTripBloc get bookDirectTrip => _i.get<BookDirectTripBloc>();
 
   static RegisterBloc get register => _i.get<RegisterBloc>();
 
   static FleetTypeBloc get getFleets => _i.get<FleetTypeBloc>();
+  static GetRootsBloc get getRoots=> _i.get<GetRootsBloc>();
 
-  static BookCustomTripBloc get bookCustomTrip => _i.get<BookCustomTripBloc>();
 }

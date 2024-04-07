@@ -28,9 +28,13 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => Di.themeBloc..loadTheme()),
         BlocProvider(create: (context) => Di.apiClientBloc),
-
-        BlocProvider(create: (context) => Di.searchTrip),
-
+        BlocProvider(
+          create: (context) => Di.getFleets..get(),
+          lazy: false,
+        ), BlocProvider(
+          create: (context) => Di.getRoots..get(),
+          lazy: false,
+        ),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
