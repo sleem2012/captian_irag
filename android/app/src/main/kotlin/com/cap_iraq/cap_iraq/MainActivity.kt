@@ -1,4 +1,4 @@
-package com.example.captain_iraq
+package com.cap_iraq.cap_iraq
 
 import io.flutter.embedding.android.FlutterActivity
 

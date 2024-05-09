@@ -1,14 +1,18 @@
+import 'package:captain_iraq/logic/trip_dead_line/trip_dead_line_state.dart';
 import 'package:captain_iraq/shared/extensions.dart';
 import 'package:captain_iraq/shared/theme/colors.dart';
 import 'package:captain_iraq/shared/theme/helper.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:captain_iraq/shared/widgets/custom_button.dart';
 import 'package:captain_iraq/shared/widgets/flux_image.dart';
+import 'package:captain_iraq/shared/widgets/loading/loading_overlay.dart';
 import 'package:captain_iraq/views/home/widget/home_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+import '../../logic/trip_dead_line/trip_dead_line_bloc.dart';
 import '../../shared/route/nav_helper.dart';
 
 class HomeView extends StatelessWidget {
@@ -56,17 +60,30 @@ class HomeView extends StatelessWidget {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("رحتلك القادمة بعد 3 ساعات",
-                                    style: KTextStyle.of(context)
-                                        .ten
-                                        .copyWith(color: KColors.mainColor)),
-                                10.h,
-                                Text(
-                                  "رحتلك القادمة بعد 30 دقيقة",
-                                  style: KTextStyle.of(context)
-                                      .ten
-                                      .copyWith(color: KColors.mainColor),
-                                )
+                                BlocBuilder<TripDeadLineBloc,
+                                    TripDeadLineState>(
+                                  builder: (context, state) {
+                                    final deadLineMessage =
+                                        TripDeadLineBloc.of(context)
+                                            .deadlineMessage;
+                                    return KRequestOverlay(
+                                      isLoading:
+                                          state is TripDeadLineStateLoading,
+                                      child: Text(deadLineMessage ?? '',
+                                          style: KTextStyle.of(context)
+                                              .ten
+                                              .copyWith(
+                                                  color: KColors.mainColor)),
+                                    );
+                                  },
+                                ),
+                                // 10.h,
+                                // Text(
+                                //   "رحتلك القادمة بعد 30 دقيقة",
+                                //   style: KTextStyle.of(context)
+                                //       .ten
+                                //       .copyWith(color: KColors.mainColor),
+                                // )
                               ],
                             ),
                             const FluxImage(
@@ -107,7 +124,33 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                70.h,
+                20.h,
+                InkWell(
+                  onTap: () {
+                    NavHelper.of(context).navigateToTripListView;
+                  },
+                  child: Container(
+                    decoration: KHelper.of(context).outLined,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("الرحلات القادمه",
+                              style: KTextStyle.of(context)
+                                  .ten
+                                  .copyWith(color: KColors.mainColor)),
+                          const Icon(
+                            FontAwesomeIcons.sort,
+                            color: KColors.lightBlack,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                50.h,
                 Padding(
                   padding: const EdgeInsets.only(bottom: 100),
                   child: KButton(

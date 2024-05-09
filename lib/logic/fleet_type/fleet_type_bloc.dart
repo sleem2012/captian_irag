@@ -29,7 +29,7 @@ class FleetTypeBloc extends Cubit<FleetTypeState> {
         },
       );
     } catch (e) {
-      rethrow;
+      // rethrow;
       debugPrint('================= FleetType Bloc (Catch): ${e.toString()} ');
       emit(const FleetTypeState.error(
           error: KFailure.someThingWrongPleaseTryAgain()));

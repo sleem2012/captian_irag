@@ -10,7 +10,7 @@ void main() async {
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
-  KStorage.i.erase;
+  // KStorage.i.erase;
 
   runApp(const RestartWidget(child: MyApp()));
 }

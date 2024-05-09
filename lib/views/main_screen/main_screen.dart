@@ -18,6 +18,7 @@ import '../reservation/reservation_history.dart';
 import '../settings/settings_view.dart';
 import '../trip/start_trip_view.dart';
 import '../trip/trip_info_view.dart';
+import '../trip/trip_list_view.dart';
 import '../wallet/add_money.dart';
 import '../wallet/fav_payment.dart';
 import '../wallet/wallet_view.dart';
@@ -31,12 +32,22 @@ class MainNavPages extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => MainViewBloc()),
         BlocProvider(
-          create: (context) => Di.getLocations..get(),
+          create: (context) => Di.getTripDates..get(),
           lazy: false,
         ),
         BlocProvider(
           create: (context) => Di.getBanner..get(),
           lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => Di.getDeadLine..get(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => Di.getTrips..get(),
+        ),
+        BlocProvider(
+          create: (context) => Di.getAccountHistory..get(),
         ),
       ],
       child: BlocBuilder<MainViewBloc, MainViewState>(
@@ -83,6 +94,7 @@ class MainNavPages extends StatelessWidget {
                   TripInformationView(),
                   NotificationView(),
                   StartTripView(),
+                  TripListView(),
                 ],
               ),
               bottomNavigationBar: AnimatedBottomNavigationBar.builder(

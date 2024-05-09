@@ -1,10 +1,10 @@
 import 'package:captain_iraq/shared/extensions.dart';
-import 'package:captain_iraq/shared/theme/colors.dart';
-import 'package:captain_iraq/shared/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/constants.dart';
+import '../../shared/theme/colors.dart';
 import '../../shared/theme/helper.dart';
+import '../../shared/theme/text_theme.dart';
 import '../../shared/widgets/flux_image.dart';
 
 class NotificationView extends StatelessWidget {
@@ -12,6 +12,8 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List data = [];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,18 +27,21 @@ class NotificationView extends StatelessWidget {
         20.h,
         Expanded(
             child: Container(
-          width: double.infinity,
-          // color: KColors.whiteColor,
-          decoration: KHelper.of(context).circledTopContainer,
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                20.h,
-                ...List.generate(
-                    10,
-                    (index) => Padding(
+              width: double.infinity,
+              // color: KColors.whiteColor,
+              decoration: KHelper.of(context).circledTopContainer,
+              child:
+              data.isNotEmpty?
+              SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    20.h,
+                    ...List.generate(
+                        10,
+                            (index) => Padding(
                           padding: const EdgeInsets.only(bottom: 10.0),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -70,7 +75,7 @@ class NotificationView extends StatelessWidget {
                                           style: KTextStyle.of(context)
                                               .ten
                                               .copyWith(
-                                                  color: KColors.mainColor),
+                                              color: KColors.mainColor),
                                         ),
                                         5.w,
                                         Text(
@@ -78,8 +83,8 @@ class NotificationView extends StatelessWidget {
                                           style: KTextStyle.of(context)
                                               .seven
                                               .copyWith(
-                                                  color:
-                                                      KColors.blackColor.withOpacity(.6)),
+                                              color: KColors.blackColor
+                                                  .withOpacity(.6)),
                                         ),
                                       ],
                                     ),
@@ -89,8 +94,8 @@ class NotificationView extends StatelessWidget {
                                       style: KTextStyle.of(context)
                                           .seven
                                           .copyWith(
-                                              color: KColors.blackColor
-                                                  .withOpacity(.54)),
+                                          color: KColors.blackColor
+                                              .withOpacity(.54)),
                                     ),
                                   ],
                                 )
@@ -98,10 +103,10 @@ class NotificationView extends StatelessWidget {
                             ),
                           ),
                         ))
-              ],
-            ),
-          ),
-        ))
+                  ],
+                ),
+              ):Center(child: Text("لا توجد اشعارات حاليا",style: KTextStyle.of(context).fifteen.copyWith(color: KColors.mainColor)),),
+            ))
       ],
     );
   }

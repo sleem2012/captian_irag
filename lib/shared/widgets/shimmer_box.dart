@@ -30,13 +30,14 @@ class ShimmerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
         itemBuilder: (context, index) => ShimmerBox(
-              width: Get.width,
-              height: Get.height * .2,
-            ),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
+          width: Get.width,
+          height: Get.height * .2,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
         separatorBuilder: (context, index) => const SizedBox(
-              height: 8,
-            ),
-        itemCount: 6);
+          height: 8,
+        ),
+        itemCount: 3);
   }
 }
+

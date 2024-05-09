@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 @immutable
 class MainViewState {
   final int index;
@@ -45,7 +44,10 @@ class MainViewBloc extends Cubit<MainViewState> {
   ];
 
   bool get showClientName => index == 0;
-  bool get showClientImage=> index == 0;
-  bool get showNotification=> index == 0;
-  bool get showTitle=> index == 4;
+
+  bool get showClientImage => index == 0;
+
+  bool get showNotification => index == 0;
+
+  bool get showTitle => index == 4;
 }

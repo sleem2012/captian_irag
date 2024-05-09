@@ -109,10 +109,8 @@ class SfDatePicker extends StatelessWidget {
                 onSubmit: (p0) => onSubmit(context, p0),
               )
             : SfDateRangePicker(
-
                 minDate: start,
                 initialSelectedDate: initial,
-
                 maxDate: end,
                 selectionMode: DateRangePickerSelectionMode.single,
                 showActionButtons: true,
@@ -124,7 +122,6 @@ class SfDatePicker extends StatelessWidget {
                     textAlign: TextAlign.center),
                 onCancel: () => Navigator.of(context).pop(),
                 onSubmit: (p0) => onSubmit(context, p0),
-
               ),
       ),
     );

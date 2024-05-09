@@ -41,4 +41,5 @@ class NavHelper {
   void get navigateTripInfo => MainViewBloc.of(_context!).navTaped(9);
   void get navigateToNotification => MainViewBloc.of(_context!).navTaped(10);
   void get navigateToStartTripView => MainViewBloc.of(_context!).navTaped(11);
+  void get navigateToTripListView => MainViewBloc.of(_context!).navTaped(12);
 }

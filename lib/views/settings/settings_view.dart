@@ -45,15 +45,18 @@ class SettingsView extends StatelessWidget {
                   },
                 ),
                 20.h,
-                CustomSettingCard(
-                  backColor: const Color(0xff5431FB),
-                  image: 'assets/images/pay_method.svg',
-                  keyText: 'طريقة السحب المفضلة',
-                  avatarColor: const Color(0xffECEAFF),
-                  onNavigate: () {
-                    NavHelper.of(context).navigateFavPayment;
-                  },
-                ),
+
+                //TODO:طرق السحب  المفضله
+
+                // CustomSettingCard(
+                //   backColor: const Color(0xff5431FB),
+                //   image: 'assets/images/pay_method.svg',
+                //   keyText: 'طريقة السحب المفضلة',
+                //   avatarColor: const Color(0xffECEAFF),
+                //   onNavigate: () {
+                //     NavHelper.of(context).navigateFavPayment;
+                //   },
+                // ),
               ],
             ),
           ),

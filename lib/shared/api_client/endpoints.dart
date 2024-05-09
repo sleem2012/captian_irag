@@ -12,4 +12,12 @@ abstract class KEndPoints {
   static String getLocations = '${baseUrl}booking-locations';
 
   static String register = '${baseUrl}register';
+  static String getTrips = '${baseUrl}trips';
+  static String getTripsDates = '${baseUrl}trips/dates';
+  static String startTrip = '${baseUrl}trips/start';
+  static String transferTrip = '${baseUrl}trips/transfer';
+  static String updateStatus = '${baseUrl}trips/update-status';
+  static String deadLine = '${baseUrl}trips/dead-line';
+  static String getAccountHistory = '${baseUrl}trips/history';
+  static String getWalletAmount = '${baseUrl}trips/finance-data';
 }

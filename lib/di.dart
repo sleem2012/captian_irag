@@ -1,6 +1,14 @@
 import 'package:captain_iraq/data/repository/general/general_repo.dart';
+import 'package:captain_iraq/data/repository/trip/trip_repo.dart';
+import 'package:captain_iraq/data/repository/wallet/wallet_repo.dart';
+import 'package:captain_iraq/logic/account_history/account_history_bloc.dart';
 import 'package:captain_iraq/logic/banner/banner_bloc.dart';
+import 'package:captain_iraq/logic/get_trip_dates/get_trip_dates_bloc.dart';
+import 'package:captain_iraq/logic/get_trips/get_trips_bloc.dart';
+import 'package:captain_iraq/logic/get_wallet_amount/get_wallet_amount_bloc.dart';
 import 'package:captain_iraq/logic/register/register_bloc.dart';
+import 'package:captain_iraq/logic/transfer_trip/transfer_trip_bloc.dart';
+import 'package:captain_iraq/logic/update_trip_status/update_trip_status_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +21,7 @@ import 'logic/get_locations/get_locations_bloc.dart';
 import 'logic/get_roots/get_roots_bloc.dart';
 import 'logic/login/login_bloc.dart';
 import 'logic/logout/logout_bloc.dart';
+import 'logic/trip_dead_line/trip_dead_line_bloc.dart';
 import 'shared/api_client/api_client_impl.dart';
 import 'shared/api_middleware_bloc/api_client_bloc.dart';
 import 'shared/observer.dart';
@@ -48,6 +57,8 @@ abstract class Di {
     _i.registerLazySingleton(() => ImagePicker());
     _i.registerLazySingleton(() => AuthRepoImpl());
     _i.registerLazySingleton(() => GeneralRepoImp());
+    _i.registerLazySingleton(() => TripRepoImp());
+    _i.registerLazySingleton(() => WalletRepoImp());
 
     ///bloc
 
@@ -58,6 +69,13 @@ abstract class Di {
     _i.registerFactory(() => BannerBloc(bannerRepoImp: _i()));
     _i.registerFactory(() => FleetTypeBloc(fleetTypeRepoImp: _i()));
     _i.registerFactory(() => GetRootsBloc(getRootsRepoImp: _i()));
+    _i.registerFactory(() => GetTripsBloc(getTripsRepoImp: _i()));
+    _i.registerFactory(() => GetTripDatesBloc(getTripDatesRepoImp: _i()));
+    _i.registerFactory(() => TripDeadLineBloc(tripDeadLineRepoImp: _i()));
+    _i.registerFactory(() => UpdateTripStatusBloc(updateTripStatusRepoImp: _i()));
+    _i.registerFactory(() => TransferTripBloc(transferTripRepoImp: _i()));
+    _i.registerFactory(() => AccountHistoryBloc(accountHistoryRepoImp: _i()));
+    _i.registerFactory(() => GetWalletAmountBloc(walletRepoImp: _i()));
   }
 
   static _unReg() async {
@@ -88,17 +106,23 @@ abstract class Di {
 
   static LogoutBloc get logOut => _i.get<LogoutBloc>();
 
-
   static GetLocationsBloc get getLocations => _i.get<GetLocationsBloc>();
 
-
-
   static BannerBloc get getBanner => _i.get<BannerBloc>();
-
 
   static RegisterBloc get register => _i.get<RegisterBloc>();
 
   static FleetTypeBloc get getFleets => _i.get<FleetTypeBloc>();
-  static GetRootsBloc get getRoots=> _i.get<GetRootsBloc>();
 
+  static GetRootsBloc get getRoots => _i.get<GetRootsBloc>();
+
+  static GetTripsBloc get getTrips => _i.get<GetTripsBloc>();
+
+  static GetTripDatesBloc get getTripDates => _i.get<GetTripDatesBloc>();
+
+  static TripDeadLineBloc get getDeadLine => _i.get<TripDeadLineBloc>();
+  static UpdateTripStatusBloc get updateTrip => _i.get<UpdateTripStatusBloc>();
+  static TransferTripBloc get transfer => _i.get<TransferTripBloc>();
+  static AccountHistoryBloc get getAccountHistory => _i.get<AccountHistoryBloc>();
+  static GetWalletAmountBloc get getWalletAmount => _i.get<GetWalletAmountBloc>();
 }

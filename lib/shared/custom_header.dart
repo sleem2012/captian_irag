@@ -3,11 +3,15 @@ import 'package:captain_iraq/shared/extensions.dart';
 import 'package:captain_iraq/shared/route/nav_helper.dart';
 import 'package:captain_iraq/shared/theme/colors.dart';
 import 'package:captain_iraq/shared/theme/text_theme.dart';
+import 'package:captain_iraq/shared/widgets/action_dialog.dart';
 import 'package:captain_iraq/shared/widgets/flux_image.dart';
 import 'package:captain_iraq/shared/widgets/icon_button.dart';
+import 'package:captain_iraq/shared/widgets/nav.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../views/splash_screen/splash_screen.dart';
 import 'constants.dart';
+import 'localization/trans.dart';
 
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   const CustomHeader({
@@ -54,6 +58,27 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 Row(
                   children: [
+                    KIconButton(
+                        onPressed: () async {
+                          ActionDialog(
+                            title: Tr.get.log_out,
+                            approveAction: Tr.get.yes_message,
+                            cancelAction: Tr.get.no_message,
+                            onApproveClick: ()async {
+                              Navigator.pop(context);
+                              await KStorage.i.erase;
+                              Nav.offAll(const SplashScreen(),);
+                            },
+                            onCancelClick: () {
+                              Navigator.pop(context);
+                            },
+                          ).show<void>(context);
+
+                        },
+                        child: const Icon(Icons.logout,size: 20,)
+                    ),
+                    10.w,
+
                     if (showNotification)
                       KIconButton(
                         onPressed: () {

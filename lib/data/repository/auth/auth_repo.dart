@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../di.dart';
 import '../../../shared/api_client/dio_client_helper.dart';
@@ -94,7 +93,7 @@ class AuthRepoImpl implements _AuthRepo {
         "country_code": countryCode.code,
         "mobile_code": countryCode.dialCode?.replaceAll("+", "") ?? '',
         "mobile": phone,
-        "address": address,
+        "address[address]": address,
         "password": password,
         "password_confirmation": password,
         "firstname": firstName,
